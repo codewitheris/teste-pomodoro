@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pomodoro Timer</title>
+
+  <link rel="stylesheet" href="pomo.css">
+</head>
+
+<body>
+  <div class="pomodoro">
+    <h2 style="color: antiquewhite;">Pomodoro</h2>
+    <div id="timer" style="color: antiquewhite;">30:00</div>
+
+    <button class="start" onclick="startTimer()">Iniciar</button>
+    <button class="pause" onclick="pauseTimer()">Pausar</button>
+    <button class="reset" onclick="resetTimer()">Resetar</button>
+  </div>
+
+  <script>
+       let time = 30 * 60; // 25 minutos
+    let interval = null;
+
+    function updateTimer() {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+
+      document.getElementById("timer").innerText =
+        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      if (interval) return;
+
+      interval = setInterval(() => {
+        if (time > 0) {
+          time--;
+          updateTimer();
+        } else {
+          clearInterval(interval);
+          interval = null;
+          alert("Tempo finalizado! ");
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      clearInterval(interval);
+      interval = null;
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      time = 30 * 60;
+      updateTimer();
+    }
+
+  </script>
+</body>
+</html>
+
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #faa0c3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .pomodoro {
+      background: rgb(1, 133, 45);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(46, 46, 46, 0.1);
+    }
+
+    #timer {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .start { background: #6ef073; color: white; }
+    .pause { background: #ffcb7d; color: white; }
+    .reset { background: #ff968f; color: white; }
