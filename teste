@@ -94,3 +94,4 @@
     .start { background: #6ef073; color: white; }
     .pause { background: #ffcb7d; color: white; }
     .reset { background: #ff968f; color: white; }
+
