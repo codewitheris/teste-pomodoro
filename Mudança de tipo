@@ -96,6 +96,7 @@ font-style: normal;
       cursor: pointer;
     }
 
+
     .start { background: #647FC6; color: white; }
     .pause { background: #F2E291; color: white; }
     .reset { background: #FBAB38; color: white; }
